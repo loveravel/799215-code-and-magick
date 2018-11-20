@@ -13,7 +13,7 @@ var FONT_GAP = 5;
 
 var victoryMessagePositionY = CLOUD_Y + GAP / 2;
 
-var optionsVictoryMessage = {
+var OptionsVictoryMessage = {
   text: 'Ура вы победили!\nСписок результатов:',
   font: '16px PT Mono',
   size: 16,
@@ -22,7 +22,7 @@ var optionsVictoryMessage = {
   y: victoryMessagePositionY
 };
 
-var optionsBar = {
+var OptionsBar = {
   maxHeight: 150,
   width: 40,
   gap: 50,
@@ -105,14 +105,14 @@ var getBarPositionY = function (playerTime, maxTime) {
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgb(255, 255, 255)');
-  renderMessage(ctx, optionsVictoryMessage);
+  renderMessage(ctx, OptionsVictoryMessage);
 
   var maxTime = getMaxElement(times);
   for (var i = 0; i < players.length; i++) {
     if (players[i] === 'Вы') {
-      ctx.fillStyle = optionsBar.thisPlayerColor;
+      ctx.fillStyle = OptionsBar.thisPlayerColor;
     } else {
-      ctx.fillStyle = optionsBar.anotherPlayerColor();
+      ctx.fillStyle = OptionsBar.anotherPlayerColor();
     }
     ctx.fillRect(CLOUD_X + GAP + ((BAR_WIDTH + GAP) * i), getBarPositionY(times[i], maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
     ctx.fillStyle = 'rgb(0, 0, 0)';
