@@ -11,13 +11,15 @@ var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
 var FONT_GAP = 5;
 
+var victoryMessagePositionY = CLOUD_Y + GAP / 2;
+
 var optionsVictoryMessage = {
   text: 'Ура вы победили!\nСписок результатов:',
   font: '16px PT Mono',
   size: 16,
   color: 'rgb(0, 0, 0)',
   x: CLOUD_X + GAP,
-  y: CLOUD_Y + GAP / 2
+  y: victoryMessagePositionY
 };
 
 var optionsBar = {
@@ -26,8 +28,12 @@ var optionsBar = {
   gap: 50,
   thisPlayerColor: 'rgb(255, 0, 0)',
   anotherPlayerColor: function () {
-    var barColumnSaturation = Math.random();
-    return 'rgb(0, 0, 255, ' + barColumnSaturation + ')';
+    return 'rgb(0, 0, ' + this.getRandom(100, 255) + ')';
+  },
+  getRandom: function (min, max) {
+    var rand = min - 0.5 + Math.random() * (max - min + 1);
+    rand = Math.round(rand);
+    return rand;
   }
 };
 
@@ -58,6 +64,7 @@ var renderMessage = function (ctx, message) {
     ctx.fillText(linesArray[i], message.x, message.y, CLOUD_WIDTH);
     message.y += lineHeight;
   }
+  message.y = victoryMessagePositionY;
 };
 
 /*
