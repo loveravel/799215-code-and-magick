@@ -9,7 +9,6 @@ var GAP = 50;
 var BAR_BOTTOM_GAP = 30;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
-var TEXT_WIDTH = 50;
 var FONT_GAP = 5;
 
 var optionsVictoryMessage = {
