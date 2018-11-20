@@ -95,11 +95,10 @@ var getMaxElement = function (arr) {
 * @param number playerTime Значение времени игрока
 * @param number maxTime Максимальное значение времени среди всех игроков
 *
-* @return number barPositionY Точка начала отрисовки колонки по Y
+* @return number Точка начала отрисовки колонки по Y
 * */
 var getBarPositionY = function (playerTime, maxTime) {
-  var barPositionY = CLOUD_HEIGHT - BAR_BOTTOM_GAP - ((BAR_HEIGHT * playerTime) / maxTime);
-  return barPositionY;
+  return CLOUD_HEIGHT - BAR_BOTTOM_GAP - ((BAR_HEIGHT * playerTime) / maxTime);
 };
 
 window.renderStatistics = function (ctx, players, times) {
