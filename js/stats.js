@@ -68,28 +68,6 @@ var renderMessage = function (ctx, message) {
 };
 
 /*
-* Функция для поиска максимального элемента в массиве
-*
-* @param array arr Массив значений,в  котром необходимо найти максимальное
-*
-* @return number maxElement Максимальное значение в заданном массиве
-* */
-var getMaxElement = function (arr) {
-  if (arr) {
-    var maxElement = arr[0];
-
-    for (var i = 1; i < arr.length; i++) {
-      if (arr[i] > maxElement) {
-        maxElement = arr[i];
-      }
-    }
-    return maxElement;
-  } else {
-    return 0;
-  }
-};
-
-/*
 * Функция для определения точки начала отрисовки колонки по Y
 *
 * @param number playerTime Значение времени игрока
@@ -106,13 +84,9 @@ window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgb(255, 255, 255)');
   renderMessage(ctx, OptionsVictoryMessage);
 
-  var maxTime = getMaxElement(times);
+  var maxTime = Math.max.apply(null, times);
   for (var i = 0; i < players.length; i++) {
-    if (players[i] === 'Вы') {
-      ctx.fillStyle = OptionsBar.thisPlayerColor;
-    } else {
-      ctx.fillStyle = OptionsBar.anotherPlayerColor();
-    }
+    ctx.fillStyle = (players[i] === 'Вы') ? OptionsBar.thisPlayerColor : OptionsBar.anotherPlayerColor();
     ctx.fillRect(CLOUD_X + GAP + ((BAR_WIDTH + GAP) * i), getBarPositionY(times[i], maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
     ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.fillText(players[i], CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_HEIGHT - FONT_GAP);
