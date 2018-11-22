@@ -10,7 +10,7 @@ var OptionsWizard = {
     'Виктор',
     'Юлия',
     'Люпита',
-    'Вашингтон',
+    'Вашингтон'
   ],
   WIZARD_SURNAMES: [
     'да Марья',
@@ -20,7 +20,7 @@ var OptionsWizard = {
     'Онопко',
     'Топольницкая',
     'Нионго',
-    'Ирвинг',
+    'Ирвинг'
   ],
   COAT_COLORS: [
     'rgb(101, 137, 164)',
@@ -28,14 +28,14 @@ var OptionsWizard = {
     'rgb(146, 100, 161)',
     'rgb(56, 159, 117)',
     'rgb(215, 210, 55)',
-    'rgb(0, 0, 0)',
+    'rgb(0, 0, 0)'
   ],
   EYES_COLORS: [
     'black',
     'red',
     'blue',
     'yellow',
-    'green',
+    'green'
   ],
 };
 
@@ -97,7 +97,7 @@ var getWizards = function () {
       {
         name: getWizardName(OptionsWizard),
         coatColor: getWizardCoatColor(OptionsWizard),
-        eyesColor: getWizardEyesColor(OptionsWizard),
+        eyesColor: getWizardEyesColor(OptionsWizard)
       },
     ];
   }
