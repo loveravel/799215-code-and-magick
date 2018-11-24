@@ -47,11 +47,11 @@ var OptionsWizard = {
 *
 * @return rand number Сгенерированное число
 * */
-var getRandom = function (min, max) {
+function getRandom(min, max) {
   var rand = min - 0.5 + Math.random() * (max - min + 1);
   rand = Math.round(rand);
   return rand;
-};
+}
 
 /*
 * Функция для создания случайных имен волшебника
@@ -61,7 +61,7 @@ var getRandom = function (min, max) {
 * @return Возвращает случайное имя волшебника
 * */
 var getWizardName = function (optionsWizardList) {
-  return optionsWizardList.WIZARD_NAMES[getRandom(0, optionsWizardList.WIZARD_NAMES.length)] + ' ' + optionsWizardList.WIZARD_SURNAMES[getRandom(0, optionsWizardList.WIZARD_SURNAMES.length)];
+  return optionsWizardList.WIZARD_NAMES[getRandom(0, optionsWizardList.WIZARD_NAMES.length - 1)] + ' ' + optionsWizardList.WIZARD_SURNAMES[getRandom(0, optionsWizardList.WIZARD_SURNAMES.length - 1)];
 };
 
 /*
@@ -72,7 +72,7 @@ var getWizardName = function (optionsWizardList) {
 * @return Возвращает случайный цвет мантии
 * */
 var getWizardCoatColor = function (optionsWizardList) {
-  return optionsWizardList.COAT_COLORS[getRandom(0, optionsWizardList.COAT_COLORS.length)];
+  return optionsWizardList.COAT_COLORS[getRandom(0, optionsWizardList.COAT_COLORS.length - 1)];
 };
 
 /*
@@ -83,8 +83,14 @@ var getWizardCoatColor = function (optionsWizardList) {
 * @return Возвращает случайный цвет глаз
 * */
 var getWizardEyesColor = function (optionsWizardList) {
-  return optionsWizardList.EYES_COLORS[getRandom(0, optionsWizardList.EYES_COLORS.length)];
+  return optionsWizardList.EYES_COLORS[getRandom(0, optionsWizardList.EYES_COLORS.length - 1)];
 };
+
+function Wizard(name, coatColor, eyesColor) {
+  this.name = name;
+  this.coatColor = coatColor;
+  this.eyesColor = eyesColor;
+}
 
 /*
 * Функция для создания волшебников
@@ -92,14 +98,9 @@ var getWizardEyesColor = function (optionsWizardList) {
 * @return wizards array Возвращает массив объектов волшебников
 * */
 var getWizards = function () {
+  var wizards = [];
   for (var i = 0; i < 4; i++) {
-    wizards += [
-      {
-        name: getWizardName(OptionsWizard),
-        coatColor: getWizardCoatColor(OptionsWizard),
-        eyesColor: getWizardEyesColor(OptionsWizard)
-      },
-    ];
+    wizards.push(new Wizard(getWizardName(OptionsWizard), getWizardCoatColor(OptionsWizard), getWizardEyesColor(OptionsWizard)));
   }
   return wizards;
 };
